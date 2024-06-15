@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oneweather/features/home/presentation/widgets/current_weather/virtical_divider.dart';
 import '../../../../../config/app_colors.dart';
 import '../../../data/models/WeatherModel.dart';
@@ -17,7 +18,7 @@ class AstroWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            gradient: AppColors.stroColor),
+            gradient: AppColors.back),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Row(
@@ -37,30 +38,31 @@ class AstroWidget extends StatelessWidget {
               const Spacer(),
               const SecondDivider(),
               Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Sunrise: ${model.forecast!.forecastday![i].astro!.sunrise}',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      'Sunset: ${model.forecast!.forecastday![i].astro!.sunset}',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      'Moonrise: ${model.forecast!.forecastday![i].astro!.moonrise}',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      'Moonset:${model.forecast!.forecastday![i].astro!.moonset}',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ]),
-              const SizedBox(width: 20)
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Sunrise: ${model.forecast!.forecastday![i].astro!.sunrise}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  SizedBox(height: 5.h),
+                  Text(
+                    'Sunset: ${model.forecast!.forecastday![i].astro!.sunset}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  SizedBox(height: 5.h),
+                  Text(
+                    'Moonrise: ${model.forecast!.forecastday![i].astro!.moonrise}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  SizedBox(height: 5.h),
+                  Text(
+                    'Moonset:${model.forecast!.forecastday![i].astro!.moonset}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+              SizedBox(width: 20.w)
             ],
           ),
         ),

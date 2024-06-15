@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/condition_img.dart';
 import '../../../data/models/WeatherModel.dart';
 
@@ -10,10 +11,12 @@ class ImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-
-      conditionImg(weatherModel, 0),
-      fit: BoxFit.cover,
+    return SizedBox(
+      child: Image.asset(
+        height: MediaQuery.of(context).size.height/2.5,
+        conditionImg(weatherModel, 0),
+        fit: BoxFit.fill,
+      ),
     );
   }
 }

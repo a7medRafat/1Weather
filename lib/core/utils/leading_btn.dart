@@ -15,7 +15,7 @@ class LeadingIcon extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(color: Colors.white38, width: 0.7)),
             child: Padding(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(8),
                 child: Icon(
                   icon,
                   size: 15,

@@ -14,7 +14,7 @@ import '../features/location/cubit/location_cubit.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  sl.registerFactory(() => HomeCubit(weatherUseCase: sl()));
+  sl.registerLazySingleton(() => HomeCubit(weatherUseCase: sl()));
 
   sl.registerLazySingleton(() => LocationCubit());
 

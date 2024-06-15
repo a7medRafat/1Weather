@@ -24,7 +24,8 @@ class HomeRepositoryImpl extends HomeRepository {
         final remoteWeather = await remoteDataSource.getWeather(cityName);
         localDataSource.cachesWeather(remoteWeather);
         return right(remoteWeather);
-      } on ServerException {
+      } on ServerException catch (e) {
+        print(e);
         return Left(ServerFailure());
       }
     } else {

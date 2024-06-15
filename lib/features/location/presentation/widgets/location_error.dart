@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import '../../../../../config/app_colors.dart';
 
@@ -26,11 +27,9 @@ class ErrorLocation extends StatelessWidget {
                   Icons.error_outline,
                   size: 100,
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10.h),
                 const Text('No matching location found.'),
-                const SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 Text('tap to search again',
                     style: Theme.of(context)
                         .textTheme

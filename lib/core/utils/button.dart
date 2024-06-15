@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:oneweather/config/app_colors.dart';
 
 class AppButton extends StatelessWidget {
   final Widget widget;
@@ -12,8 +14,8 @@ class AppButton extends StatelessWidget {
     return Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-         color: color
+          color: color,
+          borderRadius: BorderRadius.circular(8),
         ),
         child: widget);
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../../../config/app_colors.dart';
 import '../../../data/models/WeatherModel.dart';
@@ -18,7 +19,7 @@ class CirclePercentage extends StatelessWidget {
         animationDuration: 1200,
         lineWidth: 10,
         percent: model.forecast!.forecastday![0].astro!.moonIllumination!.toDouble()/100,
-        center: Image.asset('assets/images/moon.png',height: 30,),
+        center: Image.asset('assets/images/moon.png',height: 30.h),
         circularStrokeCap: CircularStrokeCap.butt,
         backgroundColor: Colors.white10,
         progressColor: AppColors.appColor,

@@ -4,14 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:meta/meta.dart';
+import 'package:oneweather/core/shared_preferances/cache_helper.dart';
 import '../../../core/constants.dart';
-
 part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
   LocationCubit() : super(LocationInitial());
-
-  String buttonState = 'location permission';
 
   Future<bool> handleLocationPermission(context) async {
     bool serviceEnabled;
@@ -44,10 +42,7 @@ class LocationCubit extends Cubit<LocationState> {
 
       return false;
     }
-    if (serviceEnabled == true) {
-      buttonState = 'get your location';
-      emit(ButtonChangSStateState());
-    }
+
     return true;
   }
 
@@ -58,7 +53,6 @@ class LocationCubit extends Cubit<LocationState> {
     await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
         .then((Position position) async {
       await getAddressFromLatLng(position);
-      buttonState = 'get weather';
       emit(GetCurrentPositionSuccessState());
     }).catchError((e) {
       debugPrint(e);
@@ -70,6 +64,7 @@ class LocationCubit extends Cubit<LocationState> {
         .then((List<Placemark> placemarks) {
       Placemark place = placemarks[0];
       myLocation = '${place.subAdministrativeArea}';
+      CacheHelper.saveData(key: 'isLocated', value: myLocation);
     }).catchError((e) {
       debugPrint(e);
     });

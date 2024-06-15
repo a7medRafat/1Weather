@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/utils/go.dart';
 import '../../../../core/utils/loading_widget.dart';
 import '../../../../core/utils/sliver_app_bar.dart';
 import '../../../home/cubit/home_cubit.dart';
@@ -11,7 +10,6 @@ import '../../../home/presentation/widgets/current_weather/header_widget.dart';
 import '../../../home/presentation/widgets/current_weather/side_text_widget.dart';
 import '../widgets/tomorrow_body.dart';
 import '../widgets/tomorrow_footer.dart';
-import '../../../home/presentation/screens/drawer_Screen.dart';
 import '../widgets/tomorrow_listview.dart';
 
 class Tomorrow extends StatelessWidget {
@@ -22,7 +20,8 @@ class Tomorrow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Scaffold(body: BlocBuilder<HomeCubit, HomeState>(
+    return Scaffold(
+        body: BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is WeatherLoadingState) {
           return const LoadingWidget();
@@ -31,8 +30,8 @@ class Tomorrow extends StatelessWidget {
           return CustomScrollView(
             slivers: [
               SliverAppBarWidget(
-                expandedHeight: size.height * 0.48,
-                containerHeight: size.height * 0.46,
+                expandedHeight: size.height * 0.40,
+                containerHeight: size.height * 0.40,
                 widget: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -40,9 +39,9 @@ class Tomorrow extends StatelessWidget {
                         model: state.sevenWeatherModel,
                         title: '+3 days',
                         icon: Icons.arrow_back_ios_new_outlined,
-                        fun: () => navigateAndFinish(context, const Zoom())),
-                    TomorrowBody(sevenWeatherModel: state.sevenWeatherModel),
+                        fun: () => Navigator.pop(context)),
                     const Spacer(),
+                    TomorrowBody(weatherModel: state.sevenWeatherModel),
                     const MyDivider(),
                     TomorrowFooter(model: state.sevenWeatherModel)
                   ],

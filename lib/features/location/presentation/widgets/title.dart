@@ -7,10 +7,7 @@ class WeatherTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'take care of your day by checking \n the weather forecast',
-      style: Theme.of(context)
-          .textTheme
-          .bodyLarge!
-          .copyWith(color: Colors.white70, fontSize: 20),
+      style: Theme.of(context).textTheme.bodyMedium!,
       textAlign: TextAlign.center,
     );
   }

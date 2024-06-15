@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../config/app_theme.dart';
 import '../core/shared_preferances/cache_helper.dart';
 import '../features/home/cubit/home_cubit.dart';
@@ -19,17 +20,25 @@ class MyApp extends StatelessWidget {
     if (isLocated != null) {
       widget = const Zoom();
     } else {
-      widget = const LocationPage();
-
+      widget = LocationPage();
     }
-
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (BuildContext context) => sl<HomeCubit>()..getWeather()),
+        BlocProvider(create: (BuildContext context) => sl<HomeCubit>()),
         BlocProvider(create: (BuildContext context) => sl<LocationCubit>()),
       ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false, theme: appTheme(), home: LocationPage()),
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        useInheritedMediaQuery: true,
+        builder: (_, child) {
+          return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: appTheme(),
+              home: widget);
+        },
+      ),
     );
   }
 }

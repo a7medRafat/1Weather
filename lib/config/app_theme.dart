@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
 
 ThemeData appTheme() {
@@ -10,27 +11,27 @@ ThemeData appTheme() {
           color: Colors.white,
           elevation: 0,
           titleTextStyle:
-              TextStyle(color: AppColors.primaryColor, fontSize: 15)),
+          TextStyle(color: AppColors.primaryColor, fontSize: 15.sp)),
       textTheme: TextTheme(
         headlineLarge: (TextStyle(
             fontSize: 120,
             fontWeight: FontWeight.bold,
             fontFamily: 'Times',
             color: AppColors.primaryColor,
-            height: 0.8)),
+            height: 0.8.h)),
         bodyLarge: TextStyle(
-            fontSize: 22,
+            fontSize: 22.sp,
             fontWeight: FontWeight.bold,
             fontFamily: 'Times',
             color: AppColors.primaryColor),
-        bodyMedium: const TextStyle(
-            fontSize: 15,
+        bodyMedium:  TextStyle(
+            fontSize: 15.sp,
             fontWeight: FontWeight.bold,
             fontFamily: 'Times',
             color: Colors.white),
-        bodySmall: const TextStyle(
+        bodySmall:  TextStyle(
             color: Colors.white70,
-            fontSize: 12,
+            fontSize: 12.sp,
             fontWeight: FontWeight.bold,
             fontFamily: 'Times'),
       ),

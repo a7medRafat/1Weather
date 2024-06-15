@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/app_colors.dart';
 import '../../../../../core/utils/button.dart';
 
@@ -26,12 +27,13 @@ class ChooseCityWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: AppButton(
               widget: IconButton(
-                  onPressed: fun,
-                  icon: const Icon(
-                    CupertinoIcons.arrow_right,
-                    size: 18,
-                  )),
-              color: AppColors.containerColor,
+                onPressed: fun,
+                icon: Icon(
+                  CupertinoIcons.arrow_right,
+                  size: 17.sp,
+                ),
+              ),
+              color: AppColors.appColor,
             ))
       ],
     );

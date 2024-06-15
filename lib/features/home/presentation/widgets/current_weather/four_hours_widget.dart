@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/app_colors.dart';
 import '../../../../../core/utils/condition_img.dart';
 import '../../../../../core/utils/hour_conditioning.dart';
@@ -58,7 +59,7 @@ class FourHoursWidget extends StatelessWidget {
       Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: Colors.white54, width: 0.4)),
+            border: Border.all(color: Colors.white54, width: 0.4.w)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
           child: Column(
@@ -68,11 +69,13 @@ class FourHoursWidget extends StatelessWidget {
                   '${weatherModel.forecast!.forecastday![0].hour![i].tempC!.toString()}\u00B0'),
               Image.asset(
                 hourConditionImg(weatherModel, i),
-                width: 50,
-                height: 50,
+                width: 50.w,
+                height: 50.h,
                 fit: BoxFit.fill,
               ),
               Text(
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 bodyNumber.substring(bodyNumber.length - 5),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
@@ -86,15 +89,13 @@ class FourHoursWidget extends StatelessWidget {
     required String bodyNumber,
     required WeatherModel model,
   }) =>
-      AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.ease,
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+      Container(
         decoration: BoxDecoration(
-          color: isHovering ? AppColors.appColor : Colors.transparent,
+          color: isHovering ? Color(0xff48319D) : Colors.transparent,
           borderRadius: BorderRadius.circular(25),
         ),
         child: Container(
+          padding:  const EdgeInsets.all(5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
           ),
@@ -107,8 +108,8 @@ class FourHoursWidget extends StatelessWidget {
                     '${weatherModel.forecast!.forecastday![0].hour![1].tempC!.toString()}\u00B0'),
                 Image.asset(
                   conditionImg(weatherModel, 0),
-                  width: 50,
-                  height: 50,
+                  width: 50.w,
+                  height: 50.h,
                   fit: BoxFit.fill,
                 ),
                 Text(

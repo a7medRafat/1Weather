@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../data/models/WeatherModel.dart';
 
 class FooterWidget extends StatelessWidget {
@@ -20,7 +21,7 @@ class FooterWidget extends StatelessWidget {
             ),
             Text(
               "${weather.current!.windKph!.round().toString()} %",
-              style: const TextStyle(fontSize: 13),
+              style: TextStyle(fontSize: 13.sp),
             ),
             Text('Wind', style: Theme.of(context).textTheme.bodySmall),
           ],
@@ -33,7 +34,7 @@ class FooterWidget extends StatelessWidget {
             ),
             Text(
               '${weather.current!.humidity!.round().toString()} %',
-              style: const TextStyle(fontSize: 13),
+              style: TextStyle(fontSize: 13.sp),
             ),
             Text('Humidity', style: Theme.of(context).textTheme.bodySmall),
           ],
@@ -46,7 +47,7 @@ class FooterWidget extends StatelessWidget {
             ),
             Text(
               '${weather.forecast!.forecastday![0].day!.dailyChanceOfRain!.round().toString()} %',
-              style: const TextStyle(fontSize: 13),
+              style: TextStyle(fontSize: 13.sp),
             ),
             Text('Raining', style: Theme.of(context).textTheme.bodySmall),
           ],

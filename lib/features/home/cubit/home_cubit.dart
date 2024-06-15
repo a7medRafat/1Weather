@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:meta/meta.dart';
-import '../../../core/constants.dart';
+import 'package:oneweather/core/shared_preferances/cache_helper.dart';
 import '../../../core/errors/failures.dart';
 import '../../../core/failures_message/failures_messages.dart';
 import '../data/models/WeatherModel.dart';
@@ -17,21 +17,22 @@ class HomeCubit extends Cubit<HomeState> {
 
   final GetWeatherUseCase weatherUseCase;
   final drawerController = ZoomDrawerController();
-
-  final city = TextEditingController();
-
-  static HomeCubit get(context) => BlocProvider.of(context);
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController cityController = TextEditingController();
 
   void getWeather() async {
     emit(WeatherLoadingState());
-    Either<Failures, WeatherModel> response =
-        await weatherUseCase.call(city.text.isEmpty ? myLocation : city.text);
+    Either<Failures, WeatherModel> response = await weatherUseCase.call(
+        cityController.text.isEmpty
+            ? CacheHelper.getData(key: 'isLocated')
+            : cityController.text);
     response.fold(
-        (failure) =>
-            emit(WeatherErrorState(message: FailureMessage.failure(failure))),
-        (weather) {
-      city.clear();
-      emit(WeatherLoadedState(sevenWeatherModel: weather));
-    });
+      (failure) =>
+          emit(WeatherErrorState(message: FailureMessage.failure(failure))),
+      (weather) {
+        cityController.clear();
+        emit(WeatherLoadedState(sevenWeatherModel: weather));
+      },
+    );
   }
 }
